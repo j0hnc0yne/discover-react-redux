@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {company} from './resources/app-config';
+import Footer from './FooterClass';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import DemosManager from './demos/DemosManager';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <div className="container">
+        <header>
+          <h1>Discover Fake Banking Services</h1>
+          <small>Serving Chicagoland since Tuesday morning</small>
+          <hr/>
         </header>
+
+        <div className="row">
+          <div className="col">
+            <DemosManager />
+          </div>
+        </div>
+
+        {/* <Footer company="Some Company"/> */}
+        <Footer company={company.name}/>
       </div>
     );
   }
