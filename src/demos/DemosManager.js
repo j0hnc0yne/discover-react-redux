@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
 
 export default class DemosManager extends Component {
-
   constructor() {
     super();
 
-    this.label='Class method';
+    this.formField = React.createRef();
+    this.state = {
+      'ctf-demo': '',
+    };
+
+    this.label = 'Class method';
     this.otherHandleClick = this.otherHandleClick.bind(this);
   }
 
   otherHandleClick(event) {
     console.log(`Clicked on the button ${this.label}`);
-  }  
-
-  handleClick = (event) => {
-    console.log(`Clicked on the button ${this.label}`);
   }
+
+  handleClick = event => {
+    console.log(`Form field value: ${this.formField.current.value}`);
+    console.log(this.formField);
+  };
+
+  updateState = event => {
+    const key = event.target.name;
+    const value = event.target.value;
+
+    this.setState({
+      [key]: value,
+    });
+
+  };
 
   render() {
     return (
@@ -23,15 +38,22 @@ export default class DemosManager extends Component {
         <form>
           <div className="form-group">
             <label>Uncontrolled Text Field</label>:
-            <input type="text" name="utf-demo" className="form-control" />
+            <input type="text" name="utf-demo" className="form-control" ref={this.formField} />
+          </div>
+
+          <div className="form-group">
+            <label>Controlled Text Field</label>:
+            <input
+              type="text"
+              name="ctf-demo"
+              className="form-control"
+              onChange={this.updateState}
+              value={this.state['ctf-demo']}
+            />
           </div>
 
           <div>
-            <button
-              onClick={() => this.otherHandleClick('custom argument')}
-              className="btn btn-primary"
-              type="button"
-            >
+            <button onClick={this.handleClick} className="btn btn-primary" type="button">
               Click Me
             </button>
           </div>

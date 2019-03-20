@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class FooterClass extends React.Component {
   render() {
@@ -11,5 +12,15 @@ class FooterClass extends React.Component {
     );
   }
 }
+
+FooterClass.defaultProps = {
+  company: 'Discover'
+};
+
+FooterClass.propTypes = {
+  company: PropTypes.string
+};
+
+
 
 export default FooterClass;
