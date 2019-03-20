@@ -11,12 +11,13 @@ const Footer = (props) => {
   );
 };
 
-Footer.defaultProps = {
-  company: 'Discover'
+Footer.propTypes = {
+  company: PropTypes.string.isRequired
 };
 
-Footer.propTypes = {
-  company: PropTypes.string
+/* Footer.defaultProps = {
+  company: 'Discover'
 };
+ */
 
 export default Footer;

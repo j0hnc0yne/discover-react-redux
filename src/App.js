@@ -5,11 +5,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.css';
-import { company } from './resources/app-config';
+// import { company } from './resources/app-config';
 import Footer from './Footer';
 import DemosManager from './demos/DemosManager';
 import LoginForm from './LoginForm';
-import PayeesManager from './PayeesManager';
+import PayeesManager from './payees/PayeesManager';
 import PeopleManager from './PeopleManager';
 import TransactionsManager from './TransactionsManager';
 import CategoriesManager from './CategoriesManager';
@@ -72,7 +72,7 @@ class App extends Component {
           <Route path="/categories" component={CategoriesManager}/>
           <Route path="/" exact component={Home} />
 
-          {/* <Footer company={company.name} /> */}
+          <Footer company="Corporation, Inc." />
           {/* <Footer /> */}
         </div>
       </Router>
