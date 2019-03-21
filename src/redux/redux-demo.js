@@ -12,6 +12,17 @@ export const add = amount => ({
   payload: amount,
 });
 
+export const increment = () => {
+  console.log('Called increment');
+  return {
+    type: actions.INCREMENT,
+  };
+};
+
+export const decrement = () => ({
+  type: actions.DECREMENT,
+});
+
 export const reducer = (state = 0, action) => {
   switch (action.type) {
     case actions.INCREMENT:

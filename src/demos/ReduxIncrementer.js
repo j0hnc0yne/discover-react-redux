@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {actions} from '../redux/redux-demo';
+import { actions, increment, decrement } from '../redux/redux-demo';
+import { getValue } from '../create-store';
 
 function ReduxIncrementer(props) {
   return (
@@ -8,7 +9,7 @@ function ReduxIncrementer(props) {
       <button className="btn btn-danger" onClick={props.decrement}>
         -
       </button>
-      <span>&nbsp;{props.value}&nbsp;</span>
+      &nbsp;<span>{props.value}</span>&nbsp;
       <button className="btn btn-primary" onClick={props.increment}>
         +
       </button>
@@ -17,12 +18,20 @@ function ReduxIncrementer(props) {
 }
 
 const mapStateToProps = state => ({
-  value: state,
+  value: getValue(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch({type: actions.INCREMENT}),
-  decrement: () => dispatch({type: actions.DECREMENT}),
+  increment: () => dispatch({ type: actions.INCREMENT }),
+  decrement: () => dispatch({ type: actions.DECREMENT }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReduxIncrementer);
+const newerMapDispatchToProps = {
+  increment,
+  decrement,
+};
+
+export default connect(
+  mapStateToProps,
+  newerMapDispatchToProps
+)(ReduxIncrementer);

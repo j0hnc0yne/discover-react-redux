@@ -1,8 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
-import { reducer } from './redux/redux-demo';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { reducer as demosReducer } from './demos/demos-reducer';
 import logger from 'redux-logger';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
+const reducer = combineReducers({
+  demos: demosReducer
+});
+
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger)));
 
-export { store };
+const getValue = state => state.demos.value;
+
+export { store, getValue };
