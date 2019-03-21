@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ListRow from './ListRow';
+import * as lodash from 'lodash';
 
 export default class PayeesList extends Component {
   render() {
@@ -12,7 +13,7 @@ export default class PayeesList extends Component {
         <thead>
           <tr>
             {columnConfig.map(config => {
-              const label = config.label || config.field;
+              const label = config.label || lodash.startCase(config.field);
               return <th key={label}>{label}</th>;
             })}
           </tr>

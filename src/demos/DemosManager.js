@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReduxIncrementer from './ReduxIncrementer';
 
 export default class DemosManager extends Component {
   constructor() {
@@ -35,6 +36,9 @@ export default class DemosManager extends Component {
   render() {
     return (
       <div>
+        <ReduxIncrementer />
+
+        {/*
         <form>
           <div className="form-group">
             <label>Uncontrolled Text Field</label>:
@@ -58,6 +62,7 @@ export default class DemosManager extends Component {
             </button>
           </div>
         </form>
+        */}
       </div>
     );
   }
