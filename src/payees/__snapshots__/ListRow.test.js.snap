@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`verifies a snapshot 1`] = `
+<tr
+  onClick={[Function]}
+>
+  <td>
+    DCH Mortgages
+  </td>
+  <td>
+    RI
+  </td>
+  <td>
+    Powhatan
+  </td>
+</tr>
+`;
