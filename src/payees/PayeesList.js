@@ -5,30 +5,40 @@ import * as lodash from 'lodash';
 
 export default class PayeesList extends Component {
   render() {
-    const { columnConfig, data } = this.props;
+    const { columnConfig, data, selectRow, sortData } = this.props;
     const fields = columnConfig.map(config => config.field);
 
     return (
       <table className="table table-hover table-striped">
         <thead>
           <tr>
-            {columnConfig.map(config => {
-              const label = config.label || lodash.startCase(config.field);
-              return <th key={label}>{label}</th>;
-            })}
+            {columnConfig.map(config => (
+              <ListHeader
+                config={config}
+                sortData={sortData}
+                key={config.field}
+              />
+            ))}
           </tr>
         </thead>
         <tbody>
-          {
-            data.map(payee => <ListRow 
-                                fields={fields} 
-                                row={payee} 
-                                key={payee.id}/>)
-          }
+          {data.map(payee => (
+            <ListRow
+              selectRow={selectRow}
+              fields={fields}
+              row={payee}
+              key={payee.id}
+            />
+          ))}
         </tbody>
       </table>
     );
   }
+}
+
+export function ListHeader({ config, sortData }) {
+  const label = config.label || lodash.startCase(config.field);
+  return <th onClick={() => sortData(config.field)}>{label}</th>;
 }
 
 PayeesList.propTypes = {
